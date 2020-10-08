@@ -38,9 +38,9 @@ print(" s6: %s" % s6)
 #     theories. These are two wrong answers, but they give you an idea of how
 #     to write your response.
 
-q1b = [ [s1,s2,s3,s4] ] # they are all equivalent.
+#q1b = [ [s1,s2,s3,s4] ] # they are all equivalent.
 #q1b = [ [s1], [s2], [s3], [s4] ] # they are all different
-#q1b = ??? # the right answer please!
+q1b = [[s1], [s2], [s3, s4]] # the right answer please!
 
 # (c) Variable q1c should be a dictionary mapping variables to True or False.
 #     Use only what you need of P, Q, R, S, T. An example (almost certainly
