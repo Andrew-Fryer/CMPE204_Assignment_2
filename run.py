@@ -85,12 +85,20 @@ s6 = ((~R>>(Q&~S))|~(S|~R))
 #      - etc.
 
 s5nnf = [
-    [~(P | Q), 'starting formula'],
-    [~P & ~Q, 'de Morgans']
+    [(S>>R)>>(Q|(~S&R)), 'starting formula'],
+    [(~S|R)>>(Q|(~S&R)), 'replace implication']
+    [~(~S|R)|(Q|(~S&R)), 'replace implication']
+    [(~~S|~R)|(Q|(~S&R)), 'de Morgans']
+    [(S|~R)|(Q|(~S&R)), 'double negation']
+    [(S|~R)|(Q|(~S&R)), 'double negation']
 ]
 
 s6nnf = [
-    [(P & Q) | R, 'starting formula -- already in negation normal form']
+    [(~R>>(Q&~S))|~(S|~R), 'starting formula']
+    [(~~R|(Q&~S))|~(S|~R), 'replace implications']
+    [(R|(Q&~S))|~(S|~R), 'double negation']
+    [(R|(Q&~S))|(~S|~~R), 'de Morgans']
+    [(R|(Q&~S))|(~S|R), 'double negation']
 ]
 
 
