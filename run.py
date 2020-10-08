@@ -66,8 +66,8 @@ print("s5 = %s" % s5.dump('python'))
 print("s6 = %s" % s6.dump('python'))
 
 # replace the following two lines with what the above code prints
-s5 = ~(P | Q)
-s6 = (P & Q) | R
+s5 = ((S>>R)>>(Q|(~S&R)))
+s6 = ((~R>>(Q&~S))|~(S|~R))
 
 # (a) Put the parse trees inside folder Q2a. You can do it on paper and take a
 #     photo, or use drawing software. This will not be marked unless requested,
