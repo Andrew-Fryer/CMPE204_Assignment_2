@@ -46,12 +46,10 @@ q1b = [[s1], [s2], [s3, s4]] # the right answer please!
 #     Use only what you need of P, Q, R, S, T. An example (almost certainly
 #     incorrect) answer is given as an example.
 q1c = {
-    P: True,
-    Q: False,
-    R: True,
-    S: False,
-    T: True
-}
+    P: False,
+    T: False,
+    S: True,
+} # this model is only satisfied by s1
 
 
 
