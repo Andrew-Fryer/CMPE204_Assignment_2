@@ -108,13 +108,20 @@ s6nnf = [
 #     an explanation for each step. Possible explanations are listed above.
 
 s5cnf = [
-    [~(P | Q), 'starting formula'],
-    [~P & ~Q, 'de Morgans']
+    [(S>>R)>>(Q|(~S&R)), 'starting formula'],
+    [(~S|R)>>(Q|(~S&R)), 'replace implication']
+    [~(~S|R)|(Q|(~S&R)), 'replace implication']
+    [(~~S|~R)|(Q|(~S&R)), 'de Morgans']
+    [(S|~R)|(Q|(~S&R)), 'double negation']
+    [(S|~R)|(Q|(~S&R)), 'double negation']
 ]
 
 s6cnf = [
-    [(P & Q) | R, 'starting formula'],
-    [(P | R) & (Q | R), 'distribution']
+    [(~R>>(Q&~S))|~(S|~R), 'starting formula']
+    [(~~R|(Q&~S))|~(S|~R), 'replace implications']
+    [(R|(Q&~S))|~(S|~R), 'double negation']
+    [(R|(Q&~S))|(~S|~~R), 'de Morgans']
+    [(R|(Q&~S))|(~S|R), 'double negation']
 ]
 
 
