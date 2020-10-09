@@ -114,6 +114,8 @@ s5cnf = [
     [(~~S|~R)|(Q|(~S&R)), 'de Morgans']
     [(S|~R)|(Q|(~S&R)), 'double negation']
     [(S|~R)|(Q|(~S&R)), 'double negation']
+    [(S|~R)|((~Q|S)&(Q|R)), 'distribution']
+    [((S|~R)|(~Q|S))&((S|~R)|(Q|R)), 'distribution']
 ]
 
 s6cnf = [
@@ -122,6 +124,8 @@ s6cnf = [
     [(R|(Q&~S))|~(S|~R), 'double negation']
     [(R|(Q&~S))|(~S|~~R), 'de Morgans']
     [(R|(Q&~S))|(~S|R), 'double negation']
+    [((R|Q)&(R|~S))|(~S|R), 'distribution']
+    [((R|Q)|(~S|R))&((R|~S)|(~S|R)), 'distribution']
 ]
 
 
