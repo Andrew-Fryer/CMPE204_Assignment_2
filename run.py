@@ -152,21 +152,5 @@ x6 = s6tseitin.tseitin(~x5, 'x6')
 x7 = s6tseitin.tseitin(x4|x6, 'x7')
 s6tseitin.finalize(x7)
 
-# e.g., s5 = ~(P | Q)
-s5tseitin = semantic_interface.Encoding()
-# first argument is the formula; second is the variable name.
-x1 = s5tseitin.tseitin(P | Q, 'x1')
-x2 = s5tseitin.tseitin(~x1, 'x2')
-# This final step is required -- use your last variable, corresponding to the top
-#  of the parse tree, to finalize your Tseitin encoding.
-s5tseitin.finalize(x2)
-
-# e.g., s6 = (P & Q) | R
-s6tseitin = semantic_interface.Encoding()
-x1 = s6tseitin.tseitin(P & Q, 'x1')
-x2 = s6tseitin.tseitin(x1 | R, 'x2')
-s6tseitin.finalize(x2)
-
-
 
 print()
