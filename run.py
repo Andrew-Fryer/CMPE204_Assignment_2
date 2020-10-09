@@ -135,14 +135,22 @@ s6cnf = [
 #     and you may re-use auxiliary variables as necessary.
 
 s5tseitin = semantic_interface.Encoding()
-x1 = s5tseitin.tseitin(P | Q, 'x1')
-x2 = s5tseitin.tseitin(~x1, 'x2')
-s5tseitin.finalize(x2)
+x1 = s5tseitin.tseitin(S>>R, 'x1')
+x2 = s5tseitin.tseitin(~S, 'x2')
+x3 = s5tseitin.tseitin(x2&R, 'x3')
+x4 = s5tseitin.tseitin(Q|x3, 'x4')
+x5 = s5tseitin.tseitin(x1>>x4, 'x5')
+s5tseitin.finalize(x5)
 
 s6tseitin = semantic_interface.Encoding()
-x1 = s6tseitin.tseitin(P & Q, 'x1')
-x2 = s6tseitin.tseitin(x1 | R, 'x2')
-s6tseitin.finalize(x2)
+x1 = s6tseitin.tseitin(~R, 'x1')
+x2 = s6tseitin.tseitin(~S, 'x2')
+x3 = s6tseitin.tseitin(Q&x2, 'x3')
+x4 = s6tseitin.tseitin(x1>>x3, 'x4')
+x5 = s6tseitin.tseitin(S|x1, 'x5')
+x6 = s6tseitin.tseitin(~x5, 'x6')
+x7 = s6tseitin.tseitin(x4|x6, 'x7')
+s6tseitin.finalize(x7)
 
 # e.g., s5 = ~(P | Q)
 s5tseitin = semantic_interface.Encoding()
