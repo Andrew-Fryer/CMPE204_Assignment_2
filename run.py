@@ -86,19 +86,19 @@ s6 = ((~R>>(Q&~S))|~(S|~R))
 
 s5nnf = [
     [(S>>R)>>(Q|(~S&R)), 'starting formula'],
-    [(~S|R)>>(Q|(~S&R)), 'replace implication']
-    [~(~S|R)|(Q|(~S&R)), 'replace implication']
-    [(~~S|~R)|(Q|(~S&R)), 'de Morgans']
-    [(S|~R)|(Q|(~S&R)), 'double negation']
-    [(S|~R)|(Q|(~S&R)), 'double negation']
+    [(~S|R)>>(Q|(~S&R)), 'replace implication'],
+    [~(~S|R)|(Q|(~S&R)), 'replace implication'],
+    [(~~S|~R)|(Q|(~S&R)), 'de Morgans'],
+    [(S|~R)|(Q|(~S&R)), 'double negation'],
+    [(S|~R)|(Q|(~S&R)), 'double negation'],
 ]
 
 s6nnf = [
-    [(~R>>(Q&~S))|~(S|~R), 'starting formula']
-    [(~~R|(Q&~S))|~(S|~R), 'replace implications']
-    [(R|(Q&~S))|~(S|~R), 'double negation']
-    [(R|(Q&~S))|(~S|~~R), 'de Morgans']
-    [(R|(Q&~S))|(~S|R), 'double negation']
+    [(~R>>(Q&~S))|~(S|~R), 'starting formula'],
+    [(~~R|(Q&~S))|~(S|~R), 'replace implications'],
+    [(R|(Q&~S))|~(S|~R), 'double negation'],
+    [(R|(Q&~S))|(~S|~~R), 'de Morgans'],
+    [(R|(Q&~S))|(~S|R), 'double negation'],
 ]
 
 
@@ -109,23 +109,23 @@ s6nnf = [
 
 s5cnf = [
     [(S>>R)>>(Q|(~S&R)), 'starting formula'],
-    [(~S|R)>>(Q|(~S&R)), 'replace implication']
-    [~(~S|R)|(Q|(~S&R)), 'replace implication']
-    [(~~S|~R)|(Q|(~S&R)), 'de Morgans']
-    [(S|~R)|(Q|(~S&R)), 'double negation']
-    [(S|~R)|(Q|(~S&R)), 'double negation']
-    [(S|~R)|((~Q|S)&(Q|R)), 'distribution']
-    [((S|~R)|(~Q|S))&((S|~R)|(Q|R)), 'distribution']
+    [(~S|R)>>(Q|(~S&R)), 'replace implication'],
+    [~(~S|R)|(Q|(~S&R)), 'replace implication'],
+    [(~~S|~R)|(Q|(~S&R)), 'de Morgans'],
+    [(S|~R)|(Q|(~S&R)), 'double negation'],
+    [(S|~R)|(Q|(~S&R)), 'double negation'],
+    [(S|~R)|((~Q|S)&(Q|R)), 'distribution'],
+    [((S|~R)|(~Q|S))&((S|~R)|(Q|R)), 'distribution'],
 ]
 
 s6cnf = [
-    [(~R>>(Q&~S))|~(S|~R), 'starting formula']
-    [(~~R|(Q&~S))|~(S|~R), 'replace implications']
-    [(R|(Q&~S))|~(S|~R), 'double negation']
-    [(R|(Q&~S))|(~S|~~R), 'de Morgans']
-    [(R|(Q&~S))|(~S|R), 'double negation']
-    [((R|Q)&(R|~S))|(~S|R), 'distribution']
-    [((R|Q)|(~S|R))&((R|~S)|(~S|R)), 'distribution']
+    [(~R>>(Q&~S))|~(S|~R), 'starting formula'],
+    [(~~R|(Q&~S))|~(S|~R), 'replace implications'],
+    [(R|(Q&~S))|~(S|~R), 'double negation'],
+    [(R|(Q&~S))|(~S|~~R), 'de Morgans'],
+    [(R|(Q&~S))|(~S|R), 'double negation'],
+    [((R|Q)&(R|~S))|(~S|R), 'distribution'],
+    [((R|Q)|(~S|R))&((R|~S)|(~S|R)), 'distribution'],
 ]
 
 
@@ -135,14 +135,10 @@ s6cnf = [
 #     and you may re-use auxiliary variables as necessary.
 
 s5tseitin = semantic_interface.Encoding()
-# first argument is the formula; second is the variable name.
 x1 = s5tseitin.tseitin(P | Q, 'x1')
 x2 = s5tseitin.tseitin(~x1, 'x2')
-# This final step is required -- use your last variable, corresponding to the top
-#  of the parse tree, to finalize your Tseitin encoding.
 s5tseitin.finalize(x2)
 
-# e.g., s6 = (P & Q) | R
 s6tseitin = semantic_interface.Encoding()
 x1 = s6tseitin.tseitin(P & Q, 'x1')
 x2 = s6tseitin.tseitin(x1 | R, 'x2')
